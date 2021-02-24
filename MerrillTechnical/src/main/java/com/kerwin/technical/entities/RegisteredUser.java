@@ -1,5 +1,6 @@
 package com.kerwin.technical.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "registered_user")
+@Table(name =  "registereduser")
 public class RegisteredUser {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 	private String city;
@@ -20,23 +21,34 @@ public class RegisteredUser {
 	
 	private String country;
 	
+	@Column(name = "firstname")
 	private String firstName;
 	
+	@Column(name = "lastname")
 	private String lastName;
 	
+	@Column(name = "organizationtype")
 	private String organizationType;
 	
 	private String phone;
 	
 	private String state;
 	
+	@Column(name = "zipcode")
 	private String zipCode;
 	
-	private String disclaimerAccepted;
+	@Column(name = "disclaimeraccepted")
+	private Boolean disclaimerAccepted;
 	
+	@Column(name = "languagecode")
 	private String languageCode;
 	
+	@Column (name = "emailaddress")
 	private String emailAddress;
+	
+	public RegisteredUser() {
+		super();
+	}
 
 	public int getId() {
 		return id;
@@ -118,11 +130,11 @@ public class RegisteredUser {
 		this.zipCode = zipCode;
 	}
 
-	public String getDisclaimerAccepted() {
+	public Boolean getDisclaimerAccepted() {
 		return disclaimerAccepted;
 	}
 
-	public void setDisclaimerAccepted(String disclaimerAccepted) {
+	public void setDisclaimerAccepted(Boolean disclaimerAccepted) {
 		this.disclaimerAccepted = disclaimerAccepted;
 	}
 
@@ -140,6 +152,33 @@ public class RegisteredUser {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public RegisteredUser(int id, String city, String company, String country, String firstName, String lastName,
+			String organizationType, String phone, String state, String zipCode, Boolean disclaimerAccepted,
+			String languageCode, String emailAddress) {
+		super();
+		this.id = id;
+		this.city = city;
+		this.company = company;
+		this.country = country;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.organizationType = organizationType;
+		this.phone = phone;
+		this.state = state;
+		this.zipCode = zipCode;
+		this.disclaimerAccepted = disclaimerAccepted;
+		this.languageCode = languageCode;
+		this.emailAddress = emailAddress;
+	}
+
+	@Override
+	public String toString() {
+		return "RegisteredUser [id=" + id + ", city=" + city + ", company=" + company + ", country=" + country
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", organizationType=" + organizationType
+				+ ", phone=" + phone + ", state=" + state + ", zipCode=" + zipCode + ", disclaimerAccepted="
+				+ disclaimerAccepted + ", languageCode=" + languageCode + ", emailAddress=" + emailAddress + "]";
 	}
 
 	@Override
@@ -164,13 +203,5 @@ public class RegisteredUser {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "RegisteredUser [id=" + id + ", city=" + city + ", company=" + company + ", country=" + country
-				+ ", firstName=" + firstName + ", lastName=" + lastName + ", organizationType=" + organizationType
-				+ ", phone=" + phone + ", state=" + state + ", zipCode=" + zipCode + ", disclaimerAccepted="
-				+ disclaimerAccepted + ", languageCode=" + languageCode + ", emailAddress=" + emailAddress + "]";
-	}
-
-	
+		
 }
