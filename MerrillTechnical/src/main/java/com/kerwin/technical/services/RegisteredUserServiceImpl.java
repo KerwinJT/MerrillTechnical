@@ -17,14 +17,17 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
 	@Override
 	public List<RegisteredUser> returnAllRegisteredUsers() {
-		System.out.println("Found\n" + ruRepo.findAll());
-		// TODO Auto-generated method stub
 		return ruRepo.findAll();
 	}
 	
 	public RegisteredUser findRegisteredUserById(Integer id) {
-		System.out.println(ruRepo.findById(id).get());
-		return ruRepo.findById(id).get();
+		RegisteredUser regUser = null;
+		try {
+			regUser = ruRepo.findById(id).get();
+		} catch(Exception e) {
+			System.out.println(e.getMessage() + " for Registered User by ID: " + id);
+		}
+		return regUser;
 	}
 
 }
