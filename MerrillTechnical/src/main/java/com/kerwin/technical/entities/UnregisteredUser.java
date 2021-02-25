@@ -1,27 +1,42 @@
 package com.kerwin.technical.entities;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-public class UnregisteredUser {
+@Table(name = "unregistereduser")
+public class UnregisteredUser extends User{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	
+	@Column(name = "emailaddress")
 	private String emailAddress;
 	
+	@Column(name = "languagecode")
 	private String languageCode;
 	
+	@Column(name = "registrationid")
 	private String registrationId;
 	
+	@Column(name = "registrationidgeneratedtime")
 	private BigInteger registrationIdGeneratedTime;
+	
+	@Transient
+	private List<Integer> projectIds = new ArrayList<Integer>();
+
+
 	
 	public UnregisteredUser() {
 		super();
@@ -66,7 +81,7 @@ public class UnregisteredUser {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -97,6 +112,14 @@ public class UnregisteredUser {
 
 	public void setRegistrationIdGeneratedTime(BigInteger registrationIdGeneratedTime) {
 		this.registrationIdGeneratedTime = registrationIdGeneratedTime;
+	}
+
+	public List<Integer> getProjectIds() {
+		return projectIds;
+	}
+
+	public void setProjectIds(List<Integer> projectIds) {
+		this.projectIds = projectIds;
 	}
 
 	@Override

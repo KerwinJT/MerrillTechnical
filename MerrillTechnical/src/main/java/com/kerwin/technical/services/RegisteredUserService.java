@@ -6,7 +6,7 @@ import com.kerwin.technical.entities.RegisteredUser;
 
 public interface RegisteredUserService {
 	
-	List<RegisteredUser> returnAllRegisteredUsers();
+	List<RegisteredUser> findAllRegisteredUsers();
 	RegisteredUser findRegisteredUserById(Integer id);
 
 }

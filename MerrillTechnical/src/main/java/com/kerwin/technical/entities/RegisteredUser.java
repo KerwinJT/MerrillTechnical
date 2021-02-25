@@ -1,51 +1,60 @@
 package com.kerwin.technical.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name =  "registereduser")
-public class RegisteredUser {
-	
+@Table(name = "registereduser")
+public class RegisteredUser extends User{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	private String city;
-	
+
 	private String company;
-	
+
 	private String country;
-	
+
 	@Column(name = "firstname")
 	private String firstName;
-	
+
 	@Column(name = "lastname")
 	private String lastName;
-	
+
 	@Column(name = "organizationtype")
 	private String organizationType;
-	
+
 	private String phone;
-	
+
 	private String state;
-	
+
 	@Column(name = "zipcode")
 	private String zipCode;
-	
+
 	@Column(name = "disclaimeraccepted")
 	private Boolean disclaimerAccepted;
-	
+
 	@Column(name = "languagecode")
 	private String languageCode;
-	
-	@Column (name = "emailaddress")
+
+	@Column(name = "emailaddress")
 	private String emailAddress;
-	
+
+
+	@Transient
+	private List<Integer> projectIds = new ArrayList<Integer>();
+
+
 	public RegisteredUser() {
 		super();
 	}
@@ -154,6 +163,14 @@ public class RegisteredUser {
 		this.emailAddress = emailAddress;
 	}
 
+	public List<Integer> getProjectIds() {
+		return projectIds;
+	}
+
+	public void setProjectIds(List<Integer> projectIds) {
+		this.projectIds = projectIds;
+	}
+
 	public RegisteredUser(int id, String city, String company, String country, String firstName, String lastName,
 			String organizationType, String phone, String state, String zipCode, Boolean disclaimerAccepted,
 			String languageCode, String emailAddress) {
@@ -203,5 +220,4 @@ public class RegisteredUser {
 		return true;
 	}
 
-		
 }

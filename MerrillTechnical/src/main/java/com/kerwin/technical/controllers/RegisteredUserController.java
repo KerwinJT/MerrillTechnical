@@ -21,8 +21,8 @@ public class RegisteredUserController {
 	private RegisteredUserService ruServe;
 
 	@GetMapping("/all")
-	public List<RegisteredUser> returnAllRegisteredUsers(HttpServletResponse response) {
-		List<RegisteredUser> allRegUsers = ruServe.returnAllRegisteredUsers();
+	public List<RegisteredUser> findAllRegisteredUsers(HttpServletResponse response) {
+		List<RegisteredUser> allRegUsers = ruServe.findAllRegisteredUsers();
 		if (allRegUsers.isEmpty()) {
 			response.setStatus(404);
 			return null;
@@ -43,7 +43,6 @@ public class RegisteredUserController {
 		return userById;
 	}
 	
-//	@PostMapping("/api/registered")
 
 
 }

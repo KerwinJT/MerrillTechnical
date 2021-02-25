@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS registereduser;
 CREATE TABLE IF NOT EXISTS registereduser(
    id                 INTEGER 
   ,city               VARCHAR(30)
@@ -15,7 +14,6 @@ CREATE TABLE IF NOT EXISTS registereduser(
   ,emailAddress       VARCHAR(30)
 );
 
-DROP TABLE IF EXISTS unregistereduser;
 CREATE TABLE IF NOT EXISTS unregistereduser(
    id                          INTEGER 
   ,emailAddress                VARCHAR(30)
@@ -24,8 +22,7 @@ CREATE TABLE IF NOT EXISTS unregistereduser(
   ,registrationIdGeneratedTime BIGINT 
 );
 
-DROP TABLE IF EXISTS project;
-CREATE TABLE project(
+CREATE TABLE IF NOT EXISTS project(
    id        INTEGER 
   ,projectId INTEGER 
   ,userId    INTEGER 

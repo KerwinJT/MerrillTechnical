@@ -1,5 +1,6 @@
 package com.kerwin.technical.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,10 @@ public class Project {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name = "projectid")
 	private int projectId;
 	
+	@Column(name = "userid")
 	private int userId;
 
 	public Project() {
